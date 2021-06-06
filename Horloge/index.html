@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Horloge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+    <style type="text/css">
+        .bs-component + .bs-component {
+          margin-top: 1rem;
+        }
+        @media (min-width: 768px) {
+          .bs-docs-section {
+            margin-top: 3em;
+          }
+          .bs-component {
+            position: relative;
+          }
+          .bs-component .modal {
+            position: relative;
+            top: auto;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            z-index: 1;
+            display: block;
+          }
+          .bs-component .modal-dialog {
+            width: 90%;
+          }
+          .bs-component .popover {
+            position: relative;
+            display: inline-block;
+            width: 220px;
+            margin: 20px;
+          }
+          .nav-tabs {
+            margin-bottom: 15px;
+          }
+          .progress {
+            margin-bottom: 10px;
+          }
+          .self-0 {
+            margin-top: 0.5em;
+          }
+        }
+        </style>
+</head>
+<!-- Google CDN,ありがとう……-->
+<body>
+    <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class = "container">
+                  <a class="navbar-brand" href="./">Horloge</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+      
+                  <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">Top</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="./about">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                      </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">新規登録</a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+            </nav>
+      </header>
+      <div class="container">
+        <section class="bs-docs-section clearfix  mx-auto">
+          <h1 class="mb-4">TOP</h1>
+          <div class="card border-primary mb-3" style="max-width: 80rem;">
+            <div class="card-header">Horlogeとは？</div>
+            <div class="card-body bs-component">
+              <p class="card-text">Horloge(オルロージュ)は、競技時報の補助ツールです。日々の時報の記録を収集して時報エキスパートを目指しましょう。<br>
+                  現在開発中のため、一切の機能を持っていません。ざんねん！<br>
+              </p>
+              <h5>今後実装予定の機能</h5>
+              <li>Twitter連携、記録の自動取得</li>
+              <li>現在ポイントの算出、ポイント/ランク更新ボーダーの提示</li>
+              <li>過去記録の表示</li>
+              <li>誤差の統計</li>
+              <li>などなど</li>
+              <p class="card-text self-0">ちなみに、Horlogeはフランス語で「時計」の意味を持ちます。名づけに迷ったらフランス語！(適当)</p>
+            </div>
+          </div>
+        </section>
+      </div>
+</body>
