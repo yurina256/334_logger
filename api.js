@@ -10,5 +10,8 @@ app.get('/api',(req,res) => {
 });
 app.get("/about",(req,res) => {
     res.sendFile(__dirname + "/about/index.html");
-})
+});
+app.get("/tools/getTime",(req,res) => {
+    res.sendFile(__dirname + "/tools/index.html");
+});
 app.listen(3000, () => console.log('Listening on port 3000'));
