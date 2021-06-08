@@ -5,7 +5,7 @@
     <title>Horloge | ツイート時刻取得</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.js"></script>
     <style type="text/css">
         .bs-component + .bs-component {
@@ -50,63 +50,86 @@
 </head>
 <!-- Google CDN,ありがとう……-->
 <body>
-    <header>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <div class = "container">
-                  <a class="navbar-brand" href="/">Horloge</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-      
-                  <div class="collapse navbar-collapse" id="navbarColor02">
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#">Top</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../about">About</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                      </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">新規登録</a>
-                        </li>
-                    </ul>
-                  </div>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class = "container">
+          <a class="navbar-brand" href="/">Horloge</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Top</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+             <li class="nav-item">
+              <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">tools</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/tools/getTime">ツイート時刻取得</a>
                 </div>
-            </nav>
-      </header>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">新規登録</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+</header>
 	<!--- 装飾はあとで--->
 	<div class="container">
 	    <section class="bs-docs-section clearfix mx-auto">
-		<h2>ツイートから時刻取得</h2>
+		<h1 class="border-bottom">ツイートから時刻取得</h1>
 		<div class="form-group">
 		    <label class="col-from-label" for="tweetURL">ツイートのURL</label><br>
 		    <input type="text" class="from-control w-75" placeholder="https://twitter.com/*username*/status/XXXXXXXXXX" id="tweetURL"></input>
 		</div>
 		<input class="btn btn-primary" type="button" id="bt" value="変換"></input><br>
-		<p class="text-success" id="sec-err">0ms</p>
-		<input type="text" id="date"></input>
+		<p class="text-success" id="sec-err">0ms :)</p>
+		<p type="text" id="date">結果:</p>
 	    </section>
 	</div>
-	<script type="text/javascript">
-	$("#bt").on("click",function(){
-	    var val = $("#tweetURL").val();
-	　　console.log(val);
-	    val = Number(val.substr(-19));
-	    console.log(val);
-	    val = val.toString(2);
-	    val = parseInt(val.substr(0,val.length-22),2);
-	    console.log(val);
-	    var dateTime = new Date((val)+1288834974657);
-	    console.log(dateTime);
-	    var time = dateTime.toLocaleTimeString();
-	    $("#date").val(time+"."+(val+657)%1000);
-	    $("sec-err").addClass("");
-	    //後で正規表現にする
-	});
-	</script>
+  <script type="text/javascript">
+    $("#bt").on("click",function(){
+        console.log("hoge");
+        var val = $("#tweetURL").val();
+    　　console.log(val);
+        val = Number(val.substr(-19));
+        console.log(val);
+        val = val.toString(2);
+        val = parseInt(val.substr(0,val.length-22),2);
+        console.log(val);
+        var dateTime = new Date((val)+1288834974657);
+        console.log(dateTime);
+        var time = dateTime.toLocaleTimeString();
+      const msec = (val+657)%1000;
+      console.log(time);
+      if(!isNaN(dateTime.getTime())){
+        $("#date").text("結果:"+time+"."+msec);
+        if(msec==0){
+            $("#sec-err").removeClass("text-primary");
+            $("#sec-err").removeClass("text-danger");
+            $("#sec-err").addClass("text-success");
+            $("#sec-err").text("0ms :)");
+        }else if(msec>=500){
+            $("#sec-err").removeClass("text-success");
+            $("#sec-err").removeClass("text-primary");
+            $("#sec-err").addClass("text-danger");
+            $("#sec-err").text(msec-1000+"ms");
+        }else{
+            $("#sec-err").removeClass("text-success");
+            $("#sec-err").removeClass("text-danger");
+            $("#sec-err").addClass("text-primary");
+            $("#sec-err").text(msec+"ms");
+        }
+      }
+        //後で正規表現にする
+    });
+        </script>
 </body>
