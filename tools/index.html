@@ -80,11 +80,17 @@
             </nav>
       </header>
 	<!--- 装飾はあとで--->
-	<div>
-	<h2>ツイートから時刻取得</h2>
-	<input type="text" id="tweetURL"></input>
-	<input type="button" id="bt" value="変換"></input><br>
-	<input type="text" id="date"></input>
+	<div class="container">
+	    <section class="bs-docs-section clearfix mx-auto">
+		<h2>ツイートから時刻取得</h2>
+		<div class="form-group">
+		    <label class="col-from-label" for="tweetURL">ツイートのURL</label><br>
+		    <input type="text" class="from-control w-75" placeholder="https://twitter.com/*username*/status/XXXXXXXXXX" id="tweetURL"></input>
+		</div>
+		<input class="btn btn-primary" type="button" id="bt" value="変換"></input><br>
+		<p class="text-success" id="sec-err">0ms</p>
+		<input type="text" id="date"></input>
+	    </section>
 	</div>
 	<script type="text/javascript">
 	$("#bt").on("click",function(){
@@ -98,7 +104,8 @@
 	    var dateTime = new Date((val)+1288834974657);
 	    console.log(dateTime);
 	    var time = dateTime.toLocaleTimeString();
-	   $("#date").val(time+"."+(val+657)%1000);
+	    $("#date").val(time+"."+(val+657)%1000);
+	    $("sec-err").addClass("");
 	    //後で正規表現にする
 	});
 	</script>
