@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Horloge | ツイート時刻取得</title>
+    <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/vnd.microsoft.icon">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
@@ -82,17 +83,16 @@
         </div>
     </nav>
 </header>
-	<!--- 装飾はあとで--->
 	<div class="container">
 	    <section class="bs-docs-section clearfix mx-auto">
-		<h1 class="border-bottom">ツイートから時刻取得</h1>
-		<div class="form-group">
-		    <label class="col-from-label" for="tweetURL">ツイートのURL</label><br>
-		    <input type="text" class="from-control w-75" placeholder="https://twitter.com/*username*/status/XXXXXXXXXX" id="tweetURL"></input>
-		</div>
-		<input class="btn btn-primary" type="button" id="bt" value="変換"></input><br>
-		<p class="text-success" id="sec-err">0ms :)</p>
-		<p type="text" id="date">結果:</p>
+		      <h1 class="border-bottom">ツイートから時刻取得</h1>
+		      <div class="form-group">
+		        <label class="col-from-label" for="tweetURL">ツイートのURL</label><br>
+		        <input type="text" class="from-control w-75" placeholder="https://twitter.com/*username*/status/XXXXXXXXXX" id="tweetURL"></input>
+		      </div>
+		      <input class="btn btn-primary" type="button" id="bt" value="変換"></input><br>
+		      <p class="text-success" id="sec-err">0ms :)</p>
+		      <p type="text" id="date">結果:</p>
 	    </section>
 	</div>
   <script type="text/javascript">
@@ -100,7 +100,7 @@
         console.log("hoge");
         var val = $("#tweetURL").val();
     　　console.log(val);
-        val = Number(val.substr(-19));
+        val = Number(val.match(/\d{18,}/));
         console.log(val);
         val = val.toString(2);
         val = parseInt(val.substr(0,val.length-22),2);
